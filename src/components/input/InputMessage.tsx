@@ -5,6 +5,7 @@ import ChatContext from '../../contexts/ChatContext';
 import CloseIcon from '../../../assets/icons/close.png';
 import { useProfile } from '../../hooks/useProfile';
 import { InputMessageProps } from '../../utils/interfaces';
+import tailwind from 'twrnc';
 
 
 
@@ -24,30 +25,30 @@ const InputMessage: React.FC<InputMessageProps> = () => {
         }
     };
     return (
-        <View className='flex-col'>
+        <View style={tailwind`flex-col`}>
             {
-                reply && <View className='flex-row justify-between items-center bg-[#f0f0f0] p-[4]'>
-                    <View className='flex-row items-center gap-1'>
-                        <View className='flex-row items-center'>
-                            <Text className='font-bold text-[20px] text-black'>{`${replyUser?.username}:`}</Text>
+                reply && <View style={tailwind`flex-row justify-between items-center bg-[#f0f0f0] p-[4px]`}>
+                    <View style={tailwind`flex-row items-center gap-1`}>
+                        <View style={tailwind`flex-row items-center`}>
+                            <Text style={tailwind`font-bold text-[20px] text-black`}>{`${replyUser?.username}:`}</Text>
                         </View>
-                        <Text className='text-black'>{reply.body.message}</Text>
+                        <Text style={tailwind`text-black`}>{reply.body.message}</Text>
                     </View>
                     <TouchableOpacity onPress={() => setReply(null)}>
-                        <Image className='w-[20] h-[20]' source={CloseIcon}/>
+                        <Image style={tailwind`w-[20px] h-[20px]`} source={CloseIcon}/>
                     </TouchableOpacity>
                 </View>                        
             }
-        <View className={`flex-row items-center bg-white border-t border-gray-300`}>
+        <View style={tailwind`flex-row items-center bg-white border-t border-gray-300`}>
             <TextInput
-                className={`flex-1 p-2`}
+                style={tailwind`flex-1 p-2`}
                 placeholder={'Type a message'}
                 value={message}
                 onChangeText={handleInputChange}
             />
             <TouchableOpacity onPress={handleSubmit}>
-                <View className={`p-4`}>
-                <Image  className='w-[16] h-[16]' source={SendIcon}/>
+                <View style={tailwind`p-4`}>
+                <Image  style={tailwind`w-[16px] h-[16px]`} source={SendIcon}/>
                 </View>
             </TouchableOpacity>
         </View>

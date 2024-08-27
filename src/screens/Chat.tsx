@@ -5,6 +5,7 @@ import Message from '../components/message';
 import ChatContext from '../contexts/ChatContext';
 import exitIcon from '../../assets/icons/exit.png';
 import { AuthContext } from '../contexts/AuthContext';
+import tailwind from 'twrnc';
 const PAGE_SIZE = 25;
 const ChatScreen: React.FC = () => {
     const { messages } = useContext(ChatContext);
@@ -15,16 +16,16 @@ const ChatScreen: React.FC = () => {
         return messages.slice(0, page * PAGE_SIZE);
     }, [messages, page]);    
     
-    return (<View className='flex-col flex-1 w-full'>
-        <View className='justify-end flex-row w-full bg-slate-300 mb-[8]' >
-            <TouchableOpacity onPress={logout} className='p-[6]'>
-                <View className='p-[6]' >
+    return (<View style={tailwind`flex-col flex-1 w-full`}>
+        <View style={tailwind`justify-end flex-row w-full bg-slate-300 mb-[8]`} >
+            <TouchableOpacity onPress={logout} style={tailwind`p-[6]`}>
+                <View style={tailwind`p-[6]`} >
                 <Image source={exitIcon} />
                 </View>
             </TouchableOpacity>
         </View>
         <FlatList
-            className='px-[8] flex-1'
+            style={tailwind`px-[8] flex-1`}
             data={paginationMessages.filter((message) => message.parent === null)}
             keyExtractor={(item) => {
                 return item.id.toString();

@@ -2,17 +2,18 @@ import { Text, View } from "react-native";
 import Message from "./Message";
 import { FC } from "react";
 import { IMessageBodyProps } from "../../utils/interfaces";
+import tailwind from "twrnc";
 
 
 const MessageBody: FC<IMessageBodyProps> = ({ body }) => {
-    return <View className="px-[4] flex-co gap-[8] mt-[16]">
-        {body.replyOf && <View className="p-[5] border-l-slate-500 border-l-[2px]">
-            <Text className="text-[12px] text-black" numberOfLines={1}>{body.replyOf}</Text>
+    return <View style={tailwind`px-[4px] flex-co gap-[8px] mt-[16px]`}>
+        {body.replyOf && <View style={tailwind`p-[5px] border-l-slate-500 border-l-[2px]`}>
+            <Text style={tailwind`text-[12px] text-black`} numberOfLines={1}>{body.replyOf}</Text>
         </View>}
-        <Text className="text-[14px] font-normal text-black text-justify">
+        <Text style={tailwind`text-[14px] font-normal text-black text-justify`}>
             {body.message}
         </Text>
-        {body.children && <View className="flex-col h-auto pl-[24]">{body.children.map((child, index) => {
+        {body.children && <View style={tailwind`flex-col h-auto pl-[24px]`}>{body.children.map((child, index) => {
             return <Message key={index} message={child} />
         })}</View>}
     </View>;

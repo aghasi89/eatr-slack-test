@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { AuthContext } from '../contexts/AuthContext';
+import tailwind from 'twrnc';
 
 const LoginScreen = () => {
     const { login } = useContext(AuthContext);
@@ -22,16 +23,16 @@ const LoginScreen = () => {
     };
 
     return (
-        <View className={`flex-1 justify-center items-center`}>
-            <Text className={`text-2xl font-bold mb-4`}>Login</Text>
+        <View style={tailwind`flex-1 justify-center items-center`}>
+            <Text style={tailwind`text-2xl font-bold mb-4`}>Login</Text>
             <TextInput
-                className={`w-64 h-10 border border-gray-300 rounded px-2 mb-2`}
+                style={tailwind`w-64 h-10 border border-gray-300 rounded px-2 mb-2`}
                 placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
             />
             <TextInput
-                className={`w-64 h-10 border border-gray-300 rounded px-2 mb-4`}
+                style={tailwind`w-64 h-10 border border-gray-300 rounded px-2 mb-4`}
                 placeholder="User Name"
                 value={username}
                 onChangeText={setusername}
@@ -40,8 +41,8 @@ const LoginScreen = () => {
                 
                 onPress={handleLogin}
             >
-                <View className={`bg-blue-500 rounded px-4 py-2`}>
-                <Text className={`text-white text-center`}>Login</Text>
+                <View style={tailwind`bg-blue-500 rounded px-4 py-2`}>
+                <Text style={tailwind`text-white text-center`}>Login</Text>
                 </View>
                 
             </TouchableOpacity>
